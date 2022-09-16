@@ -6,7 +6,7 @@ class LinearRegression(object):
     """Simple linear regression implemented from scratch"""
 
     def __init__(self) -> None:
-        self.theta = [0, 0]  # np.random.random(2)
+        self.theta = np.random.random(2)
 
     def __repr__(self) -> str:
         return f"{self.theta[0]:.5f} + {self.theta[1]:.5f} * X"
@@ -31,6 +31,8 @@ class LinearRegression(object):
         for i in range(len(y_true)):
             cost += pow((y_true[i]-y_pred[i]), 2)
 
+        cost /= len(y_true)
+
         return cost
 
     def _gradient_descent(self, m, b, X, y, alpha=0.001):
@@ -46,8 +48,8 @@ class LinearRegression(object):
         b_gradient = (-2 * b_gradient) / len(X)
 
         # Update the parameters
-        m = m + alpha * m_gradient
-        b = b + alpha * b_gradient
+        m = m - alpha * m_gradient
+        b = b - alpha * b_gradient
 
         return m, b
 
@@ -70,8 +72,8 @@ class LinearRegression(object):
             cost = self.cost(y, y_hat)
         if verbose:
             consistency = int(epochs / 20)
-            if (epoch % consistency == 0):
-                print(f"Epoch: {epoch} Cost: {cost}")
+            if (epoch % 10 == 0):
+                print("Epoch: {} Cost: {}".format(epoch, cost))
 
         # Visualize training data
         if visualize:
