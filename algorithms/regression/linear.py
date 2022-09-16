@@ -72,7 +72,7 @@ class LinearRegression(object):
             cost = self.cost(y, y_hat)
         if verbose:
             consistency = int(epochs / 20)
-            if (epoch % 10 == 0):
+            if (int(epoch % 10) == 0):
                 print("Epoch: {} Cost: {}".format(epoch, cost))
 
         # Visualize training data
@@ -81,6 +81,7 @@ class LinearRegression(object):
             output = [self.hypothesis(X[i]) for i in range(len(X))]
 
             # Visualize true vs predictions for calibration
+            plt.title('Training')
             plt.scatter(X, y)
             plt.plot(X, output, color='red')
             plt.show()
@@ -88,6 +89,6 @@ class LinearRegression(object):
 
 lr = LinearRegression()
 print(lr)
-X = list(np.random.randint(2, 9, size=10))
+X = list(np.random.randint(2, 9, size=1000))
 y = [1.5*j+2 for j in X]
 lr.fit(X, y)
