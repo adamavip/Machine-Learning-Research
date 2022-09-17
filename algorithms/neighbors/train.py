@@ -18,7 +18,7 @@ clf.fit(X_train, y_train)
 
 # Predict
 predictions = clf.predict(X_test)
-print(predictions)
+# print(predictions)
 
 # Compute the accuracy
 acc = sum(predictions == y_test) / len(y_test)

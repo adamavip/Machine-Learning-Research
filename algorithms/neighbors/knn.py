@@ -36,5 +36,6 @@ class KNN:
         # Get the indices of K closest points
         k_indices = np.argsort(distances)[:self.K]
         # Get the most common point
-        most_common = Counter(self.y_train[k_indices]).most_common()
+        counter = Counter(self.y_train[k_indices])
+        most_common = counter.most_common()
         return most_common[0][0]
