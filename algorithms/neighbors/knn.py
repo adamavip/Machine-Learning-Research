@@ -33,9 +33,13 @@ class KNN:
         # Compute the distances
         distances = [self.euclidian_distance(
             x, x_train) for x_train in self.X_train]
+
         # Get the indices of K closest points
         k_indices = np.argsort(distances)[:self.K]
+        # [self.y_train[j] for j in k_indices]
+        k_nearest_labels = self.y_train[k_indices]
+
         # Get the most common point
-        counter = Counter(self.y_train[k_indices])
+        counter = Counter(k_nearest_labels)
         most_common = counter.most_common()
         return most_common[0][0]
