@@ -86,9 +86,6 @@ class LinearRegression(object):
             plt.plot(X, output, color='red')
             plt.show()
 
-
-lr = LinearRegression()
-print(lr)
-X = list(np.random.randint(2, 9, size=1000))
-y = [1.5*j+2 for j in X]
-lr.fit(X, y)
+    def predict(self, X_test):
+        """Use best estimated parameters to make predictions"""
+        return [self.hypothesis(X_test[i]) for i in range(len(X_test))]
