@@ -3,7 +3,19 @@ import matplotlib.pyplot as plt
 
 
 class LinearRegression(object):
-    """Simple linear regression implemented from scratch"""
+    """
+    Linear Regression algorithm
+
+    Training:
+        - Initialize weight as zero (or a value between 0 and 1)
+        - Initialize bias as zero
+
+    Given a data point:
+        - Predict result using y_hat = wx +b
+        - Calculate the error 
+        - Use gradient descent to determine new weight and bias values
+        - Repeat n times
+    """
 
     def __init__(self) -> None:
         self.theta = np.random.random(2)
